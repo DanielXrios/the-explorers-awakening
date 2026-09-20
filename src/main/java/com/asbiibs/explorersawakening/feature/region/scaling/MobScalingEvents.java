@@ -5,7 +5,7 @@ import com.asbiibs.explorersawakening.feature.region.RegionLevelManager;
 import com.asbiibs.explorersawakening.registry.ModAttachments;
 
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.monster.zombie.Zombie;
+import net.minecraft.world.entity.monster.Monster;
 
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -21,24 +21,24 @@ public final class MobScalingEvents {
     public static void onFinalizeSpawn(FinalizeSpawnEvent event) {
 
         // Por enquanto estamos testando somente zombies.
-        if (!(event.getEntity() instanceof Zombie zombie)) {
+        if (!(event.getEntity() instanceof Monster mob)) {
             return;
         }
 
-        if (!(zombie.level() instanceof ServerLevel serverLevel)) {
+        if (!(mob.level() instanceof ServerLevel serverLevel)) {
             return;
         }
 
         int regionLevel = RegionLevelManager.getLevel(
                 serverLevel,
-                zombie.blockPosition()
+                mob.blockPosition()
         );
 
-        zombie.setData(
+        mob.setData(
                 ModAttachments.SPAWN_REGION_LEVEL.get(),
                 regionLevel
         );
 
-        MobScaling.apply(zombie, regionLevel);
+        MobScaling.apply(mob, regionLevel);
     }
 }

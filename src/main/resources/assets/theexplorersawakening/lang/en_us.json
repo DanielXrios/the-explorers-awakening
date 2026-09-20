@@ -1,0 +1,13 @@
+{
+  "itemGroup.theexplorersawakening": "Example Mod Tab",
+  "block.theexplorersawakening.example_block": "Example Block",
+  "item.theexplorersawakening.example_item": "Example Item",
+
+  "theexplorersawakening.configuration.title": "The Explorer's Awakening Configs",
+  "theexplorersawakening.configuration.section.theexplorersawakening.common.toml": "The Explorer's Awakening Configs",
+  "theexplorersawakening.configuration.section.theexplorersawakening.common.toml.title": "The Explorer's Awakening Configs",
+  "theexplorersawakening.configuration.items": "Item List",
+  "theexplorersawakening.configuration.logDirtBlock": "Log Dirt Block",
+  "theexplorersawakening.configuration.magicNumberIntroduction": "Magic Number Text",
+  "theexplorersawakening.configuration.magicNumber": "Magic Number"
+}

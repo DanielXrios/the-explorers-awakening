@@ -1,0 +1,107 @@
+# This is an example neoforge.mods.toml file. It contains the data relating to the loading mods.
+# There are several mandatory fields (#mandatory), and many more that are optional (#optional).
+# The overall format is standard TOML format, v0.5.0.
+# Note that there are a couple of TOML lists in this file.
+# Find more information on toml format here:  https://github.com/toml-lang/toml
+
+# The license for you mod. This is mandatory metadata and allows for easier comprehension of your redistributive properties.
+# Review your options at https://choosealicense.com/. All rights reserved is the default copyright stance, and is thus the default here.
+license="${mod_license}"
+
+# A URL to refer people to when problems occur with this mod
+#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
+
+# A list of mods - how many allowed here is determined by the individual mod loader
+[[mods]] #mandatory
+
+# The modid of the mod
+modId="${mod_id}" #mandatory
+
+# The version number of the mod
+version="${mod_version}" #mandatory
+
+# A display name for the mod
+displayName="${mod_name}" #mandatory
+
+# A URL to query for updates for this mod. See the JSON update specification https://docs.neoforged.net/docs/misc/updatechecker/
+#updateJSONURL="https://change.me.example.invalid/updates.json" #optional
+
+# A URL for the "homepage" for this mod, displayed in the mod UI
+#displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
+
+# A file name (in the root of the mod JAR) containing a logo for display
+#logoFile="examplemod.png" #optional
+
+# A text field displayed in the mod UI
+#credits="" #optional
+
+# The authors of the mod, displayed in the mod UI (optional)
+authors="ASBiiBs"
+
+# The description text for the mod (multi line!) (#mandatory)
+description='''
+The Explorer's Awakening is a large-scale exploration and progression mod designed to make every journey through Minecraft feel meaningful.
+
+Instead of treating familiar biomes as simple scenery, the mod turns them into distinct regions with their own dangers, resources, wildlife, structures, progression paths, and rewards. Even two forests may offer very different experiences: biomes can generate at different difficulty levels, affecting the strength of hostile creatures, the rarity of resources, the quality of loot, and the power of the challenges found within them.
+
+Exploration becomes a core part of character progression. Each biome has a chance to generate its own unique dungeon, culminating in a biome-specific boss. These bosses scale with the level of the region they inhabit, making higher-level areas more dangerous but also more rewarding. Defeating a boss for the first time permanently strengthens your character, granting upgrades such as increased maximum health, faster attacks, greater survivability, or other improvements.
+
+The world is also expanded with new animals, monsters, minerals, materials, tools, machines, and crafting processes inspired by both real-world resources and Minecraft's existing systems. Certain technologies and materials can only be obtained in specific environments, encouraging players to travel rather than remain in a single base forever. A swamp, for example, may offer resources and production methods unavailable in forests, mountains, deserts, or oceans.
+
+A Quest Journal provides a suggested path through the world without forcing players into a completely linear progression. Quests encourage exploration, discovery, hunting, taming, crafting, dungeon delving, boss fights, and experimentation while providing useful rewards along the way.
+
+The same philosophy extends beyond the Overworld. The Nether and the End will receive expanded biome diversity, unique ecosystems, resources, structures, enemies, and progression of their own.
+
+Future updates are also planned to introduce entirely new dimensions, including:
+
+The Sky — a world of floating landscapes and high-altitude exploration.
+The Void — a hostile and mysterious dimension built around the emptiness beyond the known world.
+Subwater — a vast dimension entirely beneath the ocean, focused on underwater survival, exploration, creatures, resources, and lost environments.
+
+The goal of The Explorer's Awakening is to make exploration feel rewarding again: every biome should have a reason to visit, every dangerous region should offer something worth finding, and every expedition should have the potential to change how you play.
+
+Explore farther. Face greater dangers. Discover new ways to survive. Grow stronger with every journey.
+'''
+
+# The [[mixins]] block allows you to declare your mixin config to FML so that it gets loaded.
+#[[mixins]]
+#config="${mod_id}.mixins.json"
+
+# The [[accessTransformers]] block allows you to declare where your AT file is.
+# If this block is omitted, a fallback attempt will be made to load an AT from META-INF/accesstransformer.cfg
+#[[accessTransformers]]
+#file="META-INF/accesstransformer.cfg"
+
+# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
+[[dependencies.${mod_id}]] #optional
+    # the modid of the dependency
+    modId="neoforge" #mandatory
+    # The type of the dependency. Can be one of "required", "optional", "incompatible" or "discouraged" (case insensitive).
+    # 'required' requires the mod to exist, 'optional' does not
+    # 'incompatible' will prevent the game from loading when the mod exists, and 'discouraged' will show a warning
+    type="required" #mandatory
+    # Optional field describing why the dependency is required or why it is incompatible
+    # reason="..."
+    # The version range of the dependency
+    versionRange="[${neo_version},)" #mandatory
+    # An ordering relationship for the dependency.
+    # BEFORE - This mod is loaded BEFORE the dependency
+    # AFTER - This mod is loaded AFTER the dependency
+    ordering="NONE"
+    # Side this dependency is applied on - BOTH, CLIENT, or SERVER
+    side="BOTH"
+
+# Here's another dependency
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    type="required"
+    # This version range declares a minimum of the current minecraft version up to but not including the next major version
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
+# Features are specific properties of the game environment, that you may want to declare you require. This example declares
+# that your mod requires GL version 3.2 or higher. Other features will be added. They are side aware so declaring this won't
+# stop your mod loading on the server for example.
+#[features.${mod_id}]
+#openGLVersion="[3.2,)"

@@ -1,5 +1,6 @@
-package com.asbiibs.explorersawake;
+package com.asbiibs.explorersawakening;
 
+import com.asbiibs.explorersawakening.config.Config;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -14,9 +15,7 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -35,26 +34,26 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 @Mod(TheExplorersAwakening.MODID)
 public class TheExplorersAwakening {
     // Define mod id in a common place for everything to reference
-    public static final String MODID = "theexplorersawakening";
+    public static final String MODID = "explorersawakening";
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
-    // Create a Deferred Register to hold Blocks which will all be registered under the "theexplorersawakening" namespace
+    // Create a Deferred Register to hold Blocks which will all be registered under the "explorersawakening" namespace
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
-    // Create a Deferred Register to hold Items which will all be registered under the "theexplorersawakening" namespace
+    // Create a Deferred Register to hold Items which will all be registered under the "explorersawakening" namespace
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
-    // Create a Deferred Register to hold CreativeModeTabs which will all be registered under the "theexplorersawakening" namespace
+    // Create a Deferred Register to hold CreativeModeTabs which will all be registered under the "explorersawakening" namespace
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
-    // Creates a new Block with the id "theexplorersawakening:example_block", combining the namespace and path
+    // Creates a new Block with the id "explorersawakening:example_block", combining the namespace and path
     public static final DeferredBlock<Block> EXAMPLE_BLOCK = BLOCKS.registerSimpleBlock("example_block", p -> p.mapColor(MapColor.STONE));
-    // Creates a new BlockItem with the id "theexplorersawakening:example_block", combining the namespace and path
+    // Creates a new BlockItem with the id "explorersawakening:example_block", combining the namespace and path
     public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("example_block", EXAMPLE_BLOCK);
 
-    // Creates a new food item with the id "theexplorersawakening:example_id", nutrition 1 and saturation 2
+    // Creates a new food item with the id "explorersawakening:example_id", nutrition 1 and saturation 2
     public static final DeferredItem<Item> EXAMPLE_ITEM = ITEMS.registerSimpleItem("example_item", p -> p.food(new FoodProperties.Builder()
             .alwaysEdible().nutrition(1).saturationModifier(2f).build()));
 
-    // Creates a creative tab with the id "theexplorersawakening:example_tab" for the example item, that is placed after the combat tab
+    // Creates a creative tab with the id "explorersawakening:example_tab" for the example item, that is placed after the combat tab
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.theexplorersawakening")) //The language key for the title of your CreativeModeTab
             .withTabsBefore(CreativeModeTabs.COMBAT)

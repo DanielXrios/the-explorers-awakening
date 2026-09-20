@@ -1,5 +1,6 @@
-package com.asbiibs.explorersawake;
+package com.asbiibs.explorersawakening.client;
 
+import com.asbiibs.explorersawakening.TheExplorersAwakening;
 import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;

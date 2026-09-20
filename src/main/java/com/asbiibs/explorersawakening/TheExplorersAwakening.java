@@ -1,6 +1,7 @@
 package com.asbiibs.explorersawakening;
 
 import com.asbiibs.explorersawakening.config.Config;
+import com.asbiibs.explorersawakening.registry.ModAttachments;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -75,6 +76,7 @@ public class TheExplorersAwakening {
         // Register the Deferred Register to the mod event bus so tabs get registered
         CREATIVE_MODE_TABS.register(modEventBus);
 
+        ModAttachments.ATTACHMENT_TYPES.register(modEventBus);
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (TheExplorersAwakening) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
